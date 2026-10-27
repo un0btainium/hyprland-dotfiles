@@ -1,0 +1,69 @@
+/* macOS-Menueleiste: halbtransparent, schlank, Arch-Logo statt Apfel */
+@define-color text   #f2f2f7;
+@define-color sub    #a6adc8;
+@define-color red    #f38ba8;
+
+* {
+  font-family: "Noto Sans", "Open Sans", "JetBrainsMono Nerd Font", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+}
+
+window#waybar {
+  background: rgba(24, 24, 37, 0.55);
+  color: @text;
+}
+
+/* Alle Eintraege: kein Kasten, nur beim Hovern ein weicher Highlight */
+#custom-logo, #window, #workspaces button, #submap, #mpris, #cpu,
+#custom-gpu, #pulseaudio, #network, #tray, #clock, #custom-power {
+  padding: 0 10px;
+  margin: 3px 1px;
+  border-radius: 6px;
+  background: transparent;
+  color: @text;
+  transition: background 0.15s ease;
+}
+
+#custom-logo:hover, #workspaces button:hover, #mpris:hover, #cpu:hover,
+#custom-gpu:hover, #pulseaudio:hover, #network:hover, #clock:hover,
+#custom-power:hover {
+  background: rgba(255, 255, 255, 0.14);
+  box-shadow: none;
+}
+
+/* Arch-Logo wie der Apfel */
+#custom-logo { font-family: "JetBrainsMono Nerd Font"; font-size: 17px; padding: 0 12px 0 14px; }
+
+/* App-Name fett, wie bei macOS */
+#window { font-weight: 700; padding: 0 12px 0 6px; }
+window#waybar.empty #window { padding: 0; margin: 0; min-width: 0; }
+window#waybar.empty #window image { margin: 0; padding: 0; }
+
+/* Workspaces: dezente Zahlen, aktiver mit weissem Highlight */
+#workspaces button { color: @sub; padding: 0 9px; }
+#workspaces button.active, #workspaces button.focused {
+  color: @text;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.20);
+}
+#workspaces button.urgent { color: @red; }
+
+#submap { color: @red; font-weight: 700; }
+
+/* Rechts: Icons etwas groesser, Stats dezent */
+#pulseaudio, #network, #custom-power, #tray { font-family: "JetBrainsMono Nerd Font"; font-size: 15px; }
+#cpu, #custom-gpu, #mpris { color: @sub; font-size: 12px; }
+#pulseaudio.muted { color: @sub; }
+#network.disconnected { color: @red; }
+#cpu.critical, #custom-gpu.critical { color: @red; }
+#custom-power { color: @sub; }
+#custom-power:hover { color: @red; }
+
+#tray > .passive { opacity: 0.5; }
+
+tooltip { background: rgba(24, 24, 37, 0.95); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 8px; }
+tooltip label { color: @text; padding: 2px 4px; }

@@ -1,0 +1,88 @@
+[
+  {
+    // Mitte (DP-2): macOS-Menueleiste
+    "name": "main",
+    "output": "DP-2",
+    "layer": "top",
+    "position": "top",
+    "height": 30,
+    "margin": "0",
+    "spacing": 0,
+    "reload_style_on_change": true,
+
+    "modules-left": ["custom/logo", "hyprland/window", "hyprland/workspaces", "hyprland/submap"],
+    "modules-center": ["clock"],
+    "modules-right": ["pulseaudio", "tray", "custom/power"],
+
+    "custom/logo": { "format": "󰣇", "tooltip": false, "on-click": "rofi -show drun" },
+
+    "hyprland/window": {
+      "format": "{initialClass}",
+      "separate-outputs": true,
+      "max-length": 30,
+      "rewrite": {
+        "kitty": "Terminal",
+        "com.microsoft.VSCode": "Visual Studio Code",
+        "code": "Visual Studio Code",
+        "firefox": "Firefox",
+        "thunar": "Dateien",
+        "org.gnome.Nautilus": "Dateien",
+        "steam": "Steam",
+        "discord": "Discord"
+      }
+    },
+
+    "hyprland/workspaces": { "format": "{id}", "all-outputs": false, "on-click": "activate" },
+    "hyprland/submap": { "format": "󰌌 {}", "tooltip": false },
+
+    "pulseaudio": {
+      "format": "{icon}",
+      "format-muted": "󰝟",
+      "format-icons": { "default": ["󰕿", "󰖀", "󰕾"] },
+      "tooltip-format": "{volume}%",
+      "on-click": "pavucontrol",
+      "scroll-step": 5
+    },
+    "tray": { "spacing": 10 },
+
+    "clock": {
+      "format": "{:%a %d. %b   %H:%M}",
+      "tooltip-format": "<tt>{calendar}</tt>"
+    },
+    "custom/power": { "format": "󰐥", "tooltip": false, "on-click": "wlogout" }
+  },
+  {
+    // Seitenmonitore
+    "name": "side",
+    "output": ["DP-1", "DP-3"],
+    "layer": "top",
+    "position": "top",
+    "height": 30,
+    "margin": "0",
+    "spacing": 0,
+    "reload_style_on_change": true,
+
+    "modules-left": ["custom/logo", "hyprland/window", "hyprland/workspaces"],
+
+    "custom/logo": { "format": "󰣇", "tooltip": false, "on-click": "rofi -show drun" },
+    "modules-center": ["clock"],
+
+    "hyprland/window": {
+      "format": "{initialClass}",
+      "separate-outputs": true,
+      "max-length": 30,
+      "rewrite": {
+        "kitty": "Terminal",
+        "com.microsoft.VSCode": "Visual Studio Code",
+        "code": "Visual Studio Code",
+        "firefox": "Firefox",
+        "thunar": "Dateien",
+        "org.gnome.Nautilus": "Dateien",
+        "steam": "Steam",
+        "discord": "Discord"
+      }
+    },
+    "hyprland/workspaces": { "format": "{id}", "all-outputs": false, "on-click": "activate" },
+    "clock": { "format": "{:%a %d. %b   %H:%M}" }
+  }
+]

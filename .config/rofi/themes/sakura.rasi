@@ -1,0 +1,37 @@
+* {
+    bg:     #11111bee;
+    bg-alt: #313244;
+    fg:     #cdd6f4;
+    pink:   #f5c2e7;
+    mauve:  #cba6f7;
+    font: "JetBrainsMono Nerd Font 13";
+    background-color: transparent;
+    text-color: @fg;
+}
+
+window {
+    width: 620px;
+    background-color: @bg;
+    border: 2px;
+    border-color: @pink;
+    border-radius: 18px;
+}
+
+mainbox { padding: 16px; spacing: 10px; }
+
+inputbar {
+    padding: 10px 14px;
+    spacing: 8px;
+    background-color: @bg-alt;
+    border-radius: 12px;
+    children: [ prompt, entry ];
+}
+
+prompt { text-color: @pink; }
+entry  { placeholder: "♡ suchen…"; placeholder-color: #6c7086; }
+
+listview { lines: 8; columns: 1; spacing: 4px; scrollbar: false; }
+
+element { padding: 8px 12px; spacing: 10px; border-radius: 10px; }
+element selected { background-color: @mauve; text-color: #11111b; }
+element-icon { size: 28px; }
